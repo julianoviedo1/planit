@@ -41,11 +41,10 @@ ActiveRecord::Schema.define(version: 2021_05_06_184654) do
 
   create_table "payments", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.integer "type"
-    t.integer "card_number"
+    t.integer "payment_type"
+    t.bigint "card_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "status"
     t.integer "secure_number"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
