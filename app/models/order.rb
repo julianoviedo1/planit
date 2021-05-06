@@ -6,5 +6,5 @@ class Order < ApplicationRecord
   belongs_to :payment
   belongs_to :service
 
-  enum status: { pending: 0, in_process: 1, performed: 2, cancelled: 3, refunded: 4 }
+  enum status: { pending: 0, recived: 1, completed: 2, cancelled: 3 }
 end
