@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 User.destroy_all
 Payment.destroy_all
 Supplier.destroy_all
@@ -7,7 +5,6 @@ Service.destroy_all
 Category.destroy_all
 ServiceCategory.destroy_all
 Order.destroy_all
-
 
 puts 'Creating Users...'
 
