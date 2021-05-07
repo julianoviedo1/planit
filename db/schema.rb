@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_06_184654) do
+ActiveRecord::Schema.define(version: 2021_05_07_120308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_184654) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_184654) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["service_id"], name: "index_orders_on_service_id"
+    t.index ["status"], name: "index_orders_on_status"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -65,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_184654) do
     t.bigint "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_services_on_name"
     t.index ["supplier_id"], name: "index_services_on_supplier_id"
   end
 
@@ -74,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_05_06_184654) do
     t.integer "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_suppliers_on_name"
   end
 
   create_table "users", force: :cascade do |t|
