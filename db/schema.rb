@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_120308) do
+ActiveRecord::Schema.define(version: 2021_05_07_130017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,12 @@ ActiveRecord::Schema.define(version: 2021_05_07_120308) do
     t.integer "total_price"
     t.date "delivery_date"
     t.string "comments"
-    t.string "hourly_range"
+    t.integer "start_time"
+    t.integer "end_time"
     t.integer "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "home_delivery"
     t.index ["payment_id"], name: "index_orders_on_payment_id"
     t.index ["service_id"], name: "index_orders_on_service_id"
     t.index ["status"], name: "index_orders_on_status"
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_120308) do
 
   create_table "suppliers", force: :cascade do |t|
     t.string "name"
+    t.string "description"
     t.string "address"
     t.integer "phone_number"
     t.datetime "created_at", precision: 6, null: false

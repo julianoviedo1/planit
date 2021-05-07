@@ -8,7 +8,8 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer :total_price
       t.date :delivery_date
       t.string :comments
-      t.string :hourly_range
+      t.integer :start_time
+      t.integer :end_time
       t.integer :status
 
       t.timestamps
