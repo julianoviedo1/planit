@@ -1,6 +1,7 @@
-# frozen_string_literal: true
-
-# Service to download ftp files from the server
 class Supplier < ApplicationRecord
-  has_many :services
+  has_many :services, dependent: :destroy
+
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
 end
