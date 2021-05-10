@@ -1,0 +1,27 @@
+$theme-colors: (
+  // "primary":    #11afaf,
+  // "secondary":  #5853bc,
+  // "success":    #665eff,
+  "info":       #5bd8d5,
+  // "warning":    #fcae00,
+  // "danger":     #ffffff,
+  "light":      #8fa5c1,
+  "dark":      #4f5b6b
+);
+
+$font-sizes: (
+  "5": 0.9rem,
+  "6": 0.8rem
+);
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
+
+$font-family-base: 'Nunito', sans-serif;
+
+@import "bootstrap/scss/bootstrap.scss";
+
+html, body {
+  margin:0;
+  padding:0;
+  width: 100%;
+}
