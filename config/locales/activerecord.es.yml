@@ -13,6 +13,9 @@ es:
       payment:
         one: Pago
         other: Pagos
+      service:
+        one: Servicio
+        other: Servicios
     attributes:
       user:
         first_name: "Nombre"
