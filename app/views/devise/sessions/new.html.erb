@@ -5,28 +5,28 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field my-3">
-        <%= f.label :email, class:"text-start fs-6 fw-bold" %><br />
-        <%= f.email_field :email, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autofocus: true, autocomplete: "email" %>
+        <%= f.label :email, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.email_field :email, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autofocus: true, autocomplete: 'email' %>
       </div>
 
       <div class="field my-3">
-        <%= f.label :password, class:"text-start fs-6 fw-bold" %><br />
-        <%= f.password_field :password, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autocomplete: "current-password",placeholder: "Mínimo 8 caracteres" %>
+        <%= f.label :password, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.password_field :password, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autocomplete: 'current-password',placeholder: 'Mínimo 8 caracteres' %>
       </div>
 
       <% if devise_mapping.rememberable? %>
         <div class="field my-3 d-none">
           <%= f.check_box :remember_me %>
-          <%= f.label :remember_me, "Recordarme" %>
+          <%= f.label :remember_me, 'Recordarme' %>
         </div>
       <% end %>
 
       <div class="actions my-3">
-        <%= f.submit "Inciar Sesión", class:'btn btn-info fs-5 fw-bold w-100' %>
+        <%= f.submit 'Inciar Sesión', class:'btn btn-info fs-5 fw-bold w-100' %>
       </div>
     <% end %>
     <div class="text-center text-dark">
-      <%= render "devise/shared/links" %>
+      <%= render 'devise/shared/links' %>
     </div>
   </div>
 </div>
