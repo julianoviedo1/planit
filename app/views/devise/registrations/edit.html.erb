@@ -1,14 +1,14 @@
 <div class="vh-100 container d-flex flex-column align-items-center justify-content-center">
   <div class="">
-    <%= image_tag "plan-it-4.png", class:"mx-auto d-block my-3" %>
+    <%= image_tag 'plan-it-4.png', class:'mx-auto d-block my-3' %>
     <h2 class="text-light my-3 text-center fs-5"><%= t('.title', resource: resource.model_name.human) %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'devise/shared/error_messages', resource: resource %>
 
       <div class="field my-3">
-        <%= f.label :email, class:"text-start fs-6 fw-bold" %><br />
-        <%= f.email_field :email, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autofocus: true, autocomplete: "email" %>
+        <%= f.label :email, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.email_field :email, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autofocus: true, autocomplete: 'email' %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -16,8 +16,8 @@
       <% end %>
 
       <div class="field my-3">
-        <%= f.label :password, class:"text-start fs-6 fw-bold" %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
-        <%= f.password_field :password, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autocomplete: "new-password" %>
+        <%= f.label :password, class:'text-start fs-6 fw-bold' %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
+        <%= f.password_field :password, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autocomplete: 'new-password' %>
         <% if @minimum_password_length %>
           <br />
           <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
@@ -25,17 +25,17 @@
       </div>
 
       <div class="field my-3">
-        <%= f.label :password_confirmation, class:"text-start fs-6 fw-bold" %><br />
-        <%= f.password_field :password_confirmation, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autocomplete: "new-password" %>
+        <%= f.label :password_confirmation, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.password_field :password_confirmation, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autocomplete: 'new-password' %>
       </div>
 
       <div class="field my-3">
-        <%= f.label :current_password, class:"text-start fs-6 fw-bold" %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
-        <%= f.password_field :current_password, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autocomplete: "current-password" %>
+        <%= f.label :current_password, class:'text-start fs-6 fw-bold' %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
+        <%= f.password_field :current_password, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autocomplete: 'current-password' %>
       </div>
 
       <div class="actions my-3">
-        <%= f.submit t('.update'), class:"btn btn-info fs-5 fw-bold w-100" %>
+        <%= f.submit t('.update'), class:'btn btn-info fs-5 fw-bold w-100' %>
       </div>
     <% end %>
 
