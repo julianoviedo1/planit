@@ -9,14 +9,14 @@ Order.destroy_all
 puts 'Creating Users...'
 
 first_user = User.create!(
-  email: 'andrew@mail.com',
+  email: 'user@mail.com',
   password: '123456',
   first_name: 'Andrew',
   last_name: 'Velez',
   address: 'Juan Paullier 1018, 11200 Montevideo'
 )
 second_user = User.create!(
-  email: 'lolaheadge@mail.com',
+  email: 'user2@mail.com',
   password: '123456',
   first_name: 'Lola',
   last_name: 'Headge',

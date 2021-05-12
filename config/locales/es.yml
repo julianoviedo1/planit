@@ -1,0 +1,75 @@
+es:
+ helpers:
+  label:
+    resource:
+      email: 'Email'
+      password: 'Contraseña'
+    user:
+        first_name: "Nombre"
+        address: "Dirección"
+        password: "Contraseña"
+    submit:
+      create: "Agregar %{model}"
+      update: "Guardar cambios"
+  date:
+    days: Días
+    formats:
+      default: "%d-%m-%Y"
+      short: "%d-%b"
+      long: "%B %d, %Y"
+      calendar: "%d-%b"
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Sep, Oct, Nov, Dic]
+    order: 
+      - :day
+      - :month
+      - :year
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+  actions:
+    add: "Agregar"
+    dislike: "Excluir"
+    edit: "Editar"
+    include: "Incluir"
+    remove: "Remover"
+    restrict: "Restringir"
+    show: "Ver"
+    search: "Buscar"
+    copy: "Copiar"
+    paste: "Pegar"
+    new: "Nuevo"
+    create: "Crear %{model}"
+    back: Volver
+    confirm: Confirmar
+    confirm_and_process: Confirmar y procesar
+  will_paginate:
+    previous_label: "&#8592; Anterior"
+    next_label: "Próximo &#8594;"
+    page_gap: "&hellip;"
+    container_aria_label: "Pagination"
+    page_aria_label: "Pagina %{page}"
+    page_entries_info:
+      single_page:
+        zero:  "%{model} no hallado"
+        one:   "Mostrando 1 %{model}"
+        other: "Mostrando %{count} %{model}"
+      single_page_html:
+        zero:  "%{model} no hallado"
+        one:   "Mostrando <b>1</b> %{model}"
+        other: "Mostrando <b>%{count}</b> %{model}"
+
+      multi_page: "Mostrando %{model} %{from} - %{to} de %{count} en total"
+      multi_page_html: "Mostrando %{model} <b>%{from}&nbsp;-&nbsp;%{to}</b> de <b>%{count}</b> en total"
+  table:
+    title: 'Listado de %{model}'
+  payment:
+    cards: Tarjetas
+    cash: Efectivo
+    currency: 'Valor (ARS)'

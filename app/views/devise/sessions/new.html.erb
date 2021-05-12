@@ -1,26 +1,32 @@
-<h2>Log in</h2>
+<div class="vh-100 container d-flex align-items-center justify-content-center">
+  <div class="">
+    <%= image_tag 'plan-it-4.png', class:"mx-auto d-block my-3" %>
+    <p class="text-light my-3 text-center fs-5" >Ingresar a la plataforma</p>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field my-3">
+        <%= f.label :email, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.email_field :email, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autofocus: true, autocomplete: 'email' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="field my-3">
+        <%= f.label :password, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.password_field :password, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autocomplete: 'current-password',placeholder: 'Mínimo 8 caracteres' %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <% if devise_mapping.rememberable? %>
+        <div class="field my-3 d-none">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me, 'Recordarme' %>
+        </div>
+      <% end %>
+
+      <div class="actions my-3">
+        <%= f.submit 'Inciar Sesión', class:'btn btn-info fs-5 fw-bold w-100' %>
+      </div>
+    <% end %>
+    <div class="text-center text-dark">
+      <%= render 'devise/shared/links' %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

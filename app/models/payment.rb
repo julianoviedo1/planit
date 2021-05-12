@@ -2,7 +2,7 @@ class Payment < ApplicationRecord
   enum payment_type: { cash: 0, credit_card: 1, debit_card: 2, wire: 3, bank_check: 4 }
 
   belongs_to :user
-  has_many :orders
+  has_many :orders, dependent: :destroy
 
   validates :card_number, length: { is: 16, allow_blank: true }
   validates :secure_number, length: { is: 3, allow_blank: true }

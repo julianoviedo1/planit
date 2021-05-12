@@ -1,0 +1,91 @@
+es:
+  activerecord:
+    models:
+      order:
+        one: Orden
+        other: Ordenes
+      user:
+        one: Usuario
+        other: Usuarios
+      supplier:
+        one: Proveedor
+        other: Proveedores
+      payment:
+        one: Pago
+        other: Pagos
+    attributes:
+      user:
+        first_name: "Nombre"
+        last_name: "Apellido"
+        email: "Email"
+        address: "Dirección"
+        confirmation_sent_at: Confirmación enviada a
+        confirmation_token: Código de confirmación
+        confirmed_at: Confirmado en
+        created_at: Creado en
+        current_password: Contraseña actual
+        current_sign_in_at: Fecha del ingreso actual
+        current_sign_in_ip: IP del ingreso actual
+        email: Email
+        encrypted_password: Contraseña cifrada
+        failed_attempts: Intentos fallidos
+        last_sign_in_at: Fecha del último ingreso
+        last_sign_in_ip: IP del último inicio
+        locked_at: Fecha de bloqueo
+        password: Contraseña
+        password_confirmation: Confirmación de la contraseña
+        remember_created_at: Fecha de 'Recordarme'
+        remember_me: Recordarme
+        reset_password_sent_at: Fecha de envío de código para contraseña
+        reset_password_token: Código para restablecer contraseña
+        sign_in_count: Cantidad de ingresos
+        unconfirmed_email: Email no confirmado
+        unlock_token: Código de desbloqueo
+        updated_at: Actualizado en
+      supplier:
+        name: "Nombre"
+        description: "Descripción"
+        address: "Dirección"
+        phone_number: "Teléfono"
+      payment:
+        date_of_approval: "Fecha de Pago Aprobado"
+        card_number: "Número de tarjeta"
+        secure_number: "Numero de seguridad"
+        payment_type: "Forma de Pago"
+        payment_types:
+          cash: "Efectivo"
+          credit_card: "Tarjeta de Credito"
+          debit_card: "Tarjeta de Dedito"
+          wire: "Transferencia"
+          bank_check: "Cheque Bancario"
+      order:
+        quantity: "Cantidad"
+        total_price: "Total"
+        delivery_date: "Dia de envío"
+        comments: "Comentarios"
+        statuses:
+          pending: "Pendiente"
+          in_process: "En proceso"
+          performed: "Realizado"
+          cancelled: "Cancelado"
+          refunded: "Reintegrado"
+    errors:
+      messages:
+        taken: "ya existe"
+        blank: "no puede estar vacio."
+        too_short: "es demasiado corto."
+        wrong_length: "no cumple con la longitud requerida."
+        greater_than: "tiene que ser mayor que 0"
+        required: 'tiene que estar presente'
+        taken: "no puede ser repetido."
+        invalid: "no cuenta con un formato válido."
+        inclusion: "no puede estar vacio"
+        not_a_number: "solo acepta numeros"
+        too_long: "es demasiado largo."
+        in_the_past: "no puede ser una fecha pasada"
+        in_the_future: "no puede ser una fecha futura"
+        record_invalid: "no es válido"
+        greater_than_or_equal_to: "tiene que ser mayor o igual a 0"
+        email_domain_known_errors: "contiene errores en el dominio"
+        no_menu_yet: Un menu no ha sido creado para esta hora de comer
+        no_meals_available: No hay comidas assignadas todavia para esta fecha
