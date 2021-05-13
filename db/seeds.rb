@@ -79,30 +79,86 @@ second_brunch = Service.create!(
 )
 
 puts 'Creating Categories...'
+require 'open-uri'
 
-bakery = Category.create!(name: 'Pateleria')
-ft = Category.create!(name: 'Foodtrucks')
-Category.create!(name: 'Barras de tragos')
-Category.create!(name: 'Salones')
-Category.create!(name: 'Fotografia')
-Category.create!(name: 'Bebidas')
-Category.create!(name: 'Musica')
-Category.create!(name: 'Cotillon')
-Category.create!(name: 'Animacion')
-mozos = Category.create!(name: 'Mozos')
-Category.create!(name: 'Vajilla')
-Category.create!(name: 'Seguridad')
-Category.create!(name: 'Mobiliario')
-catering = Category.create!(name: 'Catering')
+bakery = Category.new(name: 'Pasteleria')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912987/Planit/catering_ti6zok.png')
+bakery.icon.attach(io: file, filename: 'bakery.png', content_type: 'image/png')
+bakery.save!
+
+ft = Category.new(name: 'Foodtrucks')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913006/Planit/foodtrucks_rrm1nc.png')
+ft.icon.attach(io: file, filename: 'foodtruck.png', content_type: 'image/png')
+ft.save!
+
+drinks = Category.new(name: 'Barras de tragos')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912970/Planit/barra-tragos_tfee5f.png')
+drinks.icon.attach(io: file, filename: 'drinks.png', content_type: 'image/png')
+drinks.save!
+
+saloon = Category.new(name: 'Salones')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913063/Planit/salones_ftrcgj.png')
+saloon.icon.attach(io: file, filename: 'saloon.png', content_type: 'image/png')
+saloon.save!
+
+photo = Category.new(name: 'Fotografia')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913015/Planit/fotografia_kxhcxo.png')
+photo.icon.attach(io: file, filename: 'photo.png', content_type: 'image/png')
+photo.save!
+
+beberage = Category.new(name: 'Bebidas')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912980/Planit/bebidas_g9e0zj.png')
+beberage.icon.attach(io: file, filename: 'beberage.png', content_type: 'image/png')
+beberage.save!
+
+music = Category.new(name: 'Musica')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913053/Planit/musica_l0ntjs.png')
+music.icon.attach(io: file, filename: 'music.png', content_type: 'image/png')
+music.save!
+
+party_costums = Category.new(name: 'Cotillon')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912997/Planit/cotillon_vhn93k.png')
+party_costums.icon.attach(io: file, filename: 'party_costums.png', content_type: 'image/png')
+party_costums.save!
+
+animation = Category.new(name: 'Animacion')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912961/Planit/animacion_hux5uo.png')
+animation.icon.attach(io: file, filename: 'animation.png', content_type: 'image/png')
+animation.save!
+
+waiter = Category.new(name: 'Mozos')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913044/Planit/mozos_bzurjy.png')
+waiter.icon.attach(io: file, filename: 'waiter.png', content_type: 'image/png')
+waiter.save!
+
+crockery = Category.new(name: 'Vajilla')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913082/Planit/vajilla_ir8xzh.png')
+crockery.icon.attach(io: file, filename: 'crockery.png', content_type: 'image/png')
+crockery.save!
+
+security = Category.new(name: 'Seguridad')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913024/Planit/group-18_o1wg3w.png')
+security.icon.attach(io: file, filename: 'security.png', content_type: 'image/png')
+security.save!
+
+furniture = Category.new(name: 'Mobiliario')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912961/Planit/animacion_hux5uo.png')
+furniture.icon.attach(io: file, filename: 'barratragos.png', content_type: 'image/png')
+furniture.save!
+
+catering = Category.new(name: 'Catering')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620913034/Planit/group-27_xqylqe.png')
+catering.icon.attach(io: file, filename: 'catering.png', content_type: 'image/png')
+catering.save!
 
 puts 'Creating service_categories...'
 
 ServiceCategory.create!(service: dinner, category: catering)
-ServiceCategory.create!(service: dinner, category: mozos)
+ServiceCategory.create!(service: dinner, category: waiter)
 ServiceCategory.create!(service: brunch, category: catering)
 ServiceCategory.create!(service: brunch, category: bakery)
 ServiceCategory.create!(service: brunch, category: ft)
-ServiceCategory.create!(service: second_dinner, category: mozos)
+ServiceCategory.create!(service: second_dinner, category: waiter)
 ServiceCategory.create!(service: second_brunch, category: ft)
 
 puts 'Creating Orders...'

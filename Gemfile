@@ -8,6 +8,7 @@ gem 'cancancan'
 gem 'cloudinary'
 gem 'devise'
 gem 'devise-i18n'
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'i18n'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 # Use postgresql as the database for Active Record
