@@ -1,12 +1,15 @@
-  <nav class="navbar fixed-top background bg-light p-4">
-    <div class="container-fluid h-25 d-inline-block">
+  <nav class="navbar  background p-4">
+    <div class="mx-4 ">
       <div class="row d-flex justify-content-between" >
-      <div class="col-xs-5 col-md-2">
-      <%= image_tag 'logo-blanco.png', class:"img-fluid float-end" %>
-      </div>
-      <div class="col-xs-5 col-md-2 d-flex flex-row">
-        <%= image_tag 'pedidos.png', class:"img-fluid" %>
-        <p class="fs-4 fw-600 text-white my-auto mx-3 text-centered">Mis Compras</p>
+        <div class="col-sm-4 col-md-2 py-2">
+        <%= link_to '/' do %>
+        <%= image_tag 'logo-blanco.png', class:'img-fluid' %>
+        <% end %>
+        </div>
+        <div class="col-sm-4 col-md-2 d-flex flex-row">
+          <%= image_tag 'pedidos.png', class:'img-fluid' %>
+          <p class="fs-4 fw-600 text-white my-auto mx-3 text-centered">Mis Compras</p>
+        </div>
       </div>
     </div>
   </nav>
