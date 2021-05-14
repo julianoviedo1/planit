@@ -38,18 +38,41 @@ cash = Payment.create!(
 
 puts 'Creating Suppliers...'
 
-first_supplier = Supplier.create!(
+first_supplier = Supplier.new(
   name: 'La Pasionaria Cocina',
   address: 'Pte. Gral. Oscar Gestido 2805, 11300 Montevideo, Uruguay',
   description: 'Artesanía pastelera es una empresa dedicada a la elaboracion de catering y postres finos',
-  phone_number: 1_133_334_444
+  offers: 'Desayunos, almuerzos, dulces',
+  phone_number: 1_133_334_444,
+  delivery: true
 )
-second_supplier = Supplier.create!(
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+first_supplier.photo.attach(io: file, filename: 'first_supplier.jpg', content_type: 'image/jpg')
+first_supplier.save!
+
+second_supplier = Supplier.new(
   name: 'La Messeta',
   address: 'Obligado 1317, 11300 Montevideo, Uruguay',
-  description: 'Empresa de alta trayectoria dedicada a la elaboracion de postres finos',
-  phone_number: 1_133_334_444
+  description: 'Empresa especializada en la elaboracion de pizzasa artesanales',
+  offers: 'Desayunos, almuerzos, dulces',
+  phone_number: 1_133_334_446,
+  delivery: true
 )
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000890/Planit/pexels-vinicius-benedit-1082343_vlyj7d.jpg')
+second_supplier.photo.attach(io: file, filename: 'second_supplier.jpg', content_type: 'image/jpg')
+second_supplier.save!
+
+third_supplier = Supplier.new(
+  name: 'Medialunas Calentitas',
+  address: 'Obligado 917, 11300 Montevideo, Uruguay',
+  description: 'Panaderia de calidad',
+  offers: 'Desayunos, almuerzos, dulces',
+  phone_number: 1_133_334_445,
+  delivery: false
+)
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000894/Planit/pexels-madison-inouye-192933_muyaft.jpg')
+third_supplier.photo.attach(io: file, filename: 'third_supplier.jpg', content_type: 'image/jpg')
+third_supplier.save!
 
 puts 'Creating Services...'
 
@@ -77,9 +100,26 @@ second_brunch = Service.create!(
   supplier: second_supplier,
   price: 320
 )
+breakfast = Service.create!(
+  name: 'Desayuno completo',
+  description: 'cafe, tortas varias, jugos, mermeladas',
+  supplier: third_supplier,
+  price: 230
+)
+lunch = Service.create!(
+  name: 'Lunch de tres pasos',
+  description: 'Carne de cerdo a las brazas',
+  supplier: third_supplier,
+  price: 400
+)
 
 puts 'Creating Categories...'
 require 'open-uri'
+
+tutorial = Category.new(name: 'Tutorial')
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620915696/Planit/tutoral_jtzs0w.png')
+tutorial.icon.attach(io: file, filename: 'tutorial.png', content_type: 'image/png')
+tutorial.save!
 
 bakery = Category.new(name: 'Pasteleria')
 file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1620912987/Planit/catering_ti6zok.png')
@@ -160,6 +200,9 @@ ServiceCategory.create!(service: brunch, category: bakery)
 ServiceCategory.create!(service: brunch, category: ft)
 ServiceCategory.create!(service: second_dinner, category: waiter)
 ServiceCategory.create!(service: second_brunch, category: ft)
+ServiceCategory.create!(service: lunch, category: catering)
+ServiceCategory.create!(service: breakfast, category: bakery)
+ServiceCategory.create!(service: breakfast, category: catering)
 
 puts 'Creating Orders...'
 
@@ -184,6 +227,18 @@ Order.create!(
   comments: 'Everything needs ketchup',
   start_time: 18,
   end_time: 22,
+  home_delivery: true,
+  status: 'pending'
+)
+Order.create!(
+  user: first_user,
+  service: breakfast,
+  payment: cash,
+  quantity: 20,
+  delivery_date: Date.current.next_week,
+  comments: '',
+  start_time: 11,
+  end_time: 15,
   home_delivery: true,
   status: 'pending'
 )
