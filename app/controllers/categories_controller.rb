@@ -8,6 +8,9 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @categories = Category.all
+    @services = @category.services
+    @suppliers = Supplier.categories(@category)
   end
 
   private
