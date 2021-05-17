@@ -1,21 +1,21 @@
 <div class="vh-100 container d-flex flex-column align-items-center justify-content-center">
   <div class="">
-    <%= image_tag "plan-it-4.png", class:"mx-auto d-block my-3" %>
+    <%= image_tag 'plan-it-4.png', class:'mx-auto d-block my-3' %>
     <h2 class="text-light my-3 text-center fs-5"><%= t('.forgot_your_password') %></h2>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render 'devise/shared/error_messages', resource: resource %>
 
       <div class="field my-3">
-        <%= f.label :email, class:"text-start fs-6 fw-bold" %><br />
-        <%= f.email_field :email, autofocus: true, class:"border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light", autocomplete: "email" %>
+        <%= f.label :email, class:'text-start fs-6 fw-bold' %><br />
+        <%= f.email_field :email, autofocus: true, class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autocomplete: 'email' %>
       </div>
 
       <div class="actions my-3">
-        <%= f.submit t('.send_me_reset_password_instructions'), class:"btn btn-info fs-5 fw-bold w-100" %>
+        <%= f.submit t('.send_me_reset_password_instructions'), class:'btn btn-info fs-5 fw-bold w-100' %>
       </div>
     <% end %>
     <div class="text-center">
-      <%= render "devise/shared/links" %>
+      <%= render 'devise/shared/links' %>
     </div>
   </div>
 </div>
