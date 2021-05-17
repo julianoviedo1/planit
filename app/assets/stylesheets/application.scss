@@ -22,6 +22,8 @@ $font-family-base: 'Nunito', sans-serif;
 
 $box-shadow-sm: 0 2px 28px -4px rgba(57, 98, 113, 0.3);
 
+$border-radius-lg: 0.5rem;
+
 @import "bootstrap/scss/bootstrap.scss";
 @import "partials/navbar";
 
@@ -39,8 +41,8 @@ html, body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 6vw;
-  width: 6vw;
+  height: 4rem;
+  width: 4rem;
 
   &:hover {
     border: solid 4px $light-blue !important;

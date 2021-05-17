@@ -25,9 +25,11 @@
         </div>
         <div class="mx-2 mb-1 mt-0">
           <h5 class="fw-bold fs-4 m-0"><%=  supplier.name %></h5>
-          <h6 class="fs-6 m-0 mt-1"><%= supplier.offers %></h6>
-          <i class=<%= supplier.delivery? ? "fas fa-truck" : "fas fa-house" %> ></i>
-          <p class="fs-6"><%= supplier.delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
+          <h6 class="fs-6 m-0 mt-2"><%= supplier.offers %></h6>
+          <div class="d-flex flex-row mt-2">
+            <i class="<%= icon(supplier) %> pe-2 pt-1" ></i>
+            <p class="fs-6"><%= supplier.delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
+          </div>
         </div>
       </div>
     <% end %>
