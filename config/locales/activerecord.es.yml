@@ -19,6 +19,7 @@ es:
         last_name: "Apellido"
         email: "Email"
         address: "Dirección"
+        phone_number: 'Numero de telefono'
         confirmation_sent_at: Confirmación enviada a
         confirmation_token: Código de confirmación
         confirmed_at: Confirmado en
