@@ -9,4 +9,8 @@ class Supplier < ApplicationRecord
   def delivery?
     delivery
   end
+
+  def self.categories(category)
+    joins(services: [:categories]).where({ categories: { id: category.id } }).group(:name, :id)
+  end
 end
