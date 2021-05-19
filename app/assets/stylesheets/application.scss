@@ -3,25 +3,56 @@ $theme-colors: (
   // "secondary":  #5853bc,
   // "success":    #665eff,
   "info":       #5bd8d5,
-  // "warning":    #fcae00,
-  // "danger":     #ffffff,
+  "warning":    #b8dfec,
+  "danger":     #000000,
   "light":      #8fa5c1,
   "dark":      #4f5b6b
 );
 
 $font-sizes: (
+  "4": 1rem,
   "5": 0.9rem,
   "6": 0.8rem
 );
+$light-blue: #7af1cb;
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
 
 $font-family-base: 'Nunito', sans-serif;
 
+$box-shadow-sm: 0 2px 28px -4px rgba(57, 98, 113, 0.3);
+
+$border-radius-lg: 0.5rem;
+
 @import "bootstrap/scss/bootstrap.scss";
+@import "partials/navbar";
 
 html, body {
   margin:0;
   padding:0;
   width: 100%;
+}
+
+.letter-spacing {
+  letter-spacing: 0.25rem;
+}
+
+.icon-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 4rem;
+  width: 4rem;
+
+  &:hover {
+    border: solid 4px $light-blue !important;
+    box-shadow: 0 0 7px $light-blue !important;
+  };
+}
+.photo-background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 95%;
+  height: 90%;
 }
