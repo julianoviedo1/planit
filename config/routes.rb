@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/', to: 'categories#index'
+  resources :categories, only: [:show] do
+    resources :services, only: [:show]
+  end
 end
