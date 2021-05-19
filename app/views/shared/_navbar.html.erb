@@ -10,10 +10,9 @@
           <%= image_tag 'pedidos.png', class:'img-fluid h-auto'  %>
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-          <li><a  href="#">Action</a></li>
           <% if user_signed_in? %>
             </li>
-              <%= link_to('Settings', edit_user_registration_path, class:'dropdown-item') %>        
+              <%= link_to('Settings', edit_user_path(current_user), class:'dropdown-item') %>        
             <li>
             </li>
               <%= link_to('Orders', orders_path, class:'dropdown-item') %>        
