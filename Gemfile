@@ -12,6 +12,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'font-awesome-rails'
 gem 'i18n'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
+gem 'simple_form'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
