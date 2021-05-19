@@ -5,7 +5,28 @@
       <% end %>
     </div>
     <div class="col-sm-2 col-md-4 mx-3 d-flex flex-row justify-content-end end">
-      <%= image_tag 'pedidos.png', class:'img-fluid h-auto'  %>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= image_tag 'pedidos.png', class:'img-fluid h-auto'  %>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <% if user_signed_in? %>
+            <li>
+            <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+            </li>
+            <li>
+              <%= link_to('Logout', orders_path, method: :delete) %>        
+            </li>
+          <% else %>
+            <li>
+            <%= link_to('Login', new_user_session_path) %>  
+            </li>
+          <% end %>
+        </ul>
+      </div>
       <p class="fs-4 fw-600 text-white my-auto mx-3 text-centered">Mis Compras</p>
-    </div>
+    </div>    
+    
 </nav>
+
