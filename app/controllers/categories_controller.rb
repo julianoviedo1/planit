@@ -10,13 +10,13 @@ class CategoriesController < ApplicationController
   def show
     @categories = Category.all
     @services = @category.services
-    @suppliers = Supplier.categories(@category)
+    @suppliers = Supplier.categories(@category).search(params[:query])
   end
 
   private
 
   def category_params
-    params.require(:categories).permit(:id, :name, :description)
+    params.require(:categories).permit(:id, :name, :description, :query)
   end
 
   def set_category
