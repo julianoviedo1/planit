@@ -103,6 +103,8 @@ ActiveRecord::Schema.define(version: 2021_05_14_113931) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "delivery"
     t.string "offers"
+    t.integer "opens_at"
+    t.integer "close_at"
     t.index ["name"], name: "index_suppliers_on_name"
   end
 

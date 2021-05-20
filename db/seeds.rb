@@ -44,7 +44,9 @@ first_supplier = Supplier.new(
   description: 'Artesanía pastelera es una empresa dedicada a la elaboracion de catering y postres finos',
   offers: 'Desayunos, almuerzos, dulces',
   phone_number: 1_133_334_444,
-  delivery: true
+  delivery: true,
+  opens_at: 10,
+  close_at: 21
 )
 file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
 first_supplier.photo.attach(io: file, filename: 'first_supplier.jpg', content_type: 'image/jpg')
@@ -56,7 +58,9 @@ second_supplier = Supplier.new(
   description: 'Empresa especializada en la elaboracion de pizzasa artesanales',
   offers: 'Desayunos, almuerzos, dulces',
   phone_number: 1_133_334_446,
-  delivery: true
+  delivery: true,
+  opens_at: 10,
+  close_at: 21
 )
 file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000890/Planit/pexels-vinicius-benedit-1082343_vlyj7d.jpg')
 second_supplier.photo.attach(io: file, filename: 'second_supplier.jpg', content_type: 'image/jpg')
@@ -68,7 +72,9 @@ third_supplier = Supplier.new(
   description: 'Panaderia de calidad',
   offers: 'Desayunos, almuerzos, dulces',
   phone_number: 1_133_334_445,
-  delivery: false
+  delivery: false,
+  opens_at: 11,
+  close_at: 16
 )
 file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000894/Planit/pexels-madison-inouye-192933_muyaft.jpg')
 third_supplier.photo.attach(io: file, filename: 'third_supplier.jpg', content_type: 'image/jpg')
@@ -76,42 +82,65 @@ third_supplier.save!
 
 puts 'Creating Services...'
 
-dinner = Service.create!(
+dinner = Service.new(
   name: 'Cena gourmet',
   description: 'Cena en 3 pasos gourmet',
   supplier: first_supplier,
   price: 520
 )
-brunch = Service.create!(
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+dinner.photo.attach(io: file, filename: 'dinner.png', content_type: 'image/png')
+dinner.save!
+
+brunch = Service.new(
   name: 'Brunch completo',
   description: 'Scones de queso, exprimido de naranja, cafe, medialunas',
   supplier: first_supplier,
   price: 350
 )
-second_dinner = Service.create!(
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+brunch.photo.attach(io: file, filename: 'brunch.png', content_type: 'image/png')
+brunch.save!
+
+second_dinner = Service.new(
   name: 'Cena gourmet',
   description: 'Cena en 3 pasos gourmet',
   supplier: second_supplier,
   price: 540
 )
-second_brunch = Service.create!(
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+second_dinner.photo.attach(io: file, filename: 'second_dinner.png', content_type: 'image/png')
+second_dinner.save!
+
+second_brunch = Service.new(
   name: 'Brunch completo',
   description: 'Scones de queso, exprimido de naranja, cafe, medialunas',
   supplier: second_supplier,
   price: 320
 )
-breakfast = Service.create!(
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+second_brunch.photo.attach(io: file, filename: 'second_brunch.png', content_type: 'image/png')
+second_brunch.save!
+
+breakfast = Service.new(
   name: 'Desayuno completo',
   description: 'cafe, tortas varias, jugos, mermeladas',
   supplier: third_supplier,
   price: 230
 )
-lunch = Service.create!(
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+breakfast.photo.attach(io: file, filename: 'breakfast.png', content_type: 'image/png')
+breakfast.save!
+
+lunch = Service.new(
   name: 'Lunch de tres pasos',
   description: 'Carne de cerdo a las brazas',
   supplier: third_supplier,
   price: 400
 )
+file = URI.open('https://res.cloudinary.com/eagerworks-planit/image/upload/v1621000898/Planit/pexels-artem-beliaikin-452740_srubqb.jpg')
+lunch.photo.attach(io: file, filename: 'lunch.png', content_type: 'image/png')
+lunch.save!
 
 puts 'Creating Categories...'
 require 'open-uri'

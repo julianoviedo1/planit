@@ -1,20 +1,8 @@
 <header>
-  <%= render "shared/navbar" %>
+  <%= render 'shared/navbar' %>
 </header>
 <section class="container mt-5 w-75">
-  <h6 class="fw-bold letter-spacing my-4"><%= t('activerecord.models.service.other').upcase %></h6>
-  <div class="row equal justify-content-center">
-  <% @categories.each do |category| %>
-    <div class="col-3 col-lg-1 mx-3 d-flex justify-content-center">
-      <%= link_to category_path(category), class:'text-decoration-none' do %>
-      <div class="border border-1 rounded-circle icon-background shadow-sm d-flex justify-content-center">
-        <%= cl_image_tag category.icon.key, class:'m-auto'%>
-      </div>
-      <p class="fs-6 fw-bold text-center text-danger mt-2 "><%= category.name %></p>
-      <% end %>
-    </div>
-  <% end %>
-  </div>
+  <%= render 'shared/categories' %>
 </section>
 <section class="container my-5">
   <div class="row d-flex justify-content-around">

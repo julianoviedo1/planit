@@ -1,3 +1,47 @@
 <header>
-  <%= render "shared/navbar" %>
+  <%= render 'shared/navbar' %>
 </header>
+<section class="container mt-5 w-75">
+  <%= render 'shared/categories' %>
+</section>
+<section class="container mb-4">
+  <div class="card p-3 border border-1 rounded-3 shadow-sm w-50 mx-auto">
+    <%= form_tag category_path(@category), method: 'get', class:'d-flex justify-content-md-end mx-auto' do %>
+        <div class="d-flex flex-column">
+          <p class="fw-bold fs-6 mx-2 my-0 p-0">Nombre del Proveedor:</p>
+          <%= text_field_tag :query, params[:query], class:'mx-2 p-1' %>
+        </div>
+        <div class="d-flex justify-contet-end">
+          <%= submit_tag "#{t('helpers.label.submit.search')}", name: nil, class:'btn background text-white m-auto mb-0' %>
+        </div>
+    <% end %>
+  </div>
+</section>
+<section class="container">
+  <% @suppliers.each do |supplier| %>
+      <div class="supplier-info d-flex flex-row m-2">
+        <h4 class="mb-1"><%= supplier.name %></h4>
+        <p class="border-end mx-1 px-2 my-auto"><%= supplier.offers %></p>
+        <p class="border-end mx-1 px-2 my-auto"><i class="fas fa-clock text-info pe-2 pt-1"></i> Lun a Sáb <%= supplier.opens_at %>:00hs - <%= supplier.close_at %>:00hs</p>
+        <div class="d-flex flex-row  mx-1 px-2 my-auto">
+          <i class="<%= supplier.delivery? ? "fas fa-truck" : "fas fa-house" %> text-info pe-2 my-auto" ></i>
+          <p class="fs-6 m-1"><%= supplier.delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-around m-3">
+        <% supplier.services.each do |service| %>
+          <%= link_to supplier_path(supplier), class:'text-decoration-none col-4 col-md-3' do %>
+            <div class=" card shadow border border-2 rounded-3 d-flex ">
+              <div class="card-title d-flex mt-2">
+                <%= cl_image_tag service.photo.key, class:' photo-background m-auto rounded-top' %>
+              </div>
+              <div class="mx-2 my-auto">
+                <h5 class="fw-bold fw-bolder text-danger fs-4 mb-2"><%= service.name %></h5>
+                <h6 class="fs-6 m-0 mt-1 text-danger mb-2">desde <strong>$ <%= service.price %></strong> + IVA</h6>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+  <% end %>
+</section>

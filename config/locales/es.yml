@@ -5,13 +5,14 @@ es:
       email: 'Email'
       password: 'Contraseña'
     user:
-        first_name: "Nombre"
-        address: "Dirección"
-        password: "Contraseña"
-        phone_number: "Telefono"
+      first_name: "Nombre"
+      address: "Dirección"
+      password: "Contraseña"
+      phone_number: "Telefono"
     submit:
       create: "Agregar %{model}"
       update: "Guardar cambios"
+      search: "Buscar"
   date:
     days: Días
     formats:
