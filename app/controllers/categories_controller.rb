@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
   def show
     @categories = Category.all
     @services = @category.services
-    @suppliers = Supplier.categories(@category).search(params[:query])
+    @suppliers = Supplier.categories(@category).search_name(params[:query])
   end
 
   private

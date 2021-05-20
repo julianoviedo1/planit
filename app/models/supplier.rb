@@ -8,19 +8,10 @@ class Supplier < ApplicationRecord
   validates :opens_at, numericality: { in: 0..23 }
   validates :close_at, numericality: { in: 0..23 }
 
+  scope :categories, ->(category) { joins(services: [:categories]).where({ categories: { id: category.id } }) }
+  scope :search_name, ->(search) { where('suppliers.name LIKE ?', "%#{search}%") }
+
   def delivery?
     delivery
-  end
-
-  def self.categories(category)
-    joins(services: [:categories]).where({ categories: { id: category.id } }).group(:name,:id)
-  end
-
-  def self.search(search)
-    if search
-      where('suppliers.name LIKE ?', "%#{search}%")
-    else
-      all
-    end
   end
 end
