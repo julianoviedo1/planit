@@ -6,13 +6,13 @@
 </section>
 <section class="container mb-4">
   <div class="card p-3 border border-1 rounded-3 shadow-sm w-50 mx-auto">
-    <%= form_tag category_path(@category), :method => 'get', class:'d-flex justify-content-md-end mx-auto' do %>
+    <%= form_tag category_path(@category), method: 'get', class:'d-flex justify-content-md-end mx-auto' do %>
         <div class="d-flex flex-column">
           <p class="fw-bold fs-6 mx-2 my-0 p-0">Nombre del Proveedor:</p>
           <%= text_field_tag :query, params[:query], class:'mx-2 p-1' %>
         </div>
         <div class="d-flex justify-contet-end">
-          <%= submit_tag "#{t('helpers.label.submit.search')}", :name => nil, class:'btn background text-white m-auto mb-0' %>
+          <%= submit_tag "#{t('helpers.label.submit.search')}", name: nil, class:'btn background text-white m-auto mb-0' %>
         </div>
     <% end %>
   </div>
