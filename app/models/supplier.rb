@@ -9,7 +9,7 @@ class Supplier < ApplicationRecord
   validates :close_at, numericality: { in: 0..23 }
 
   scope :categories, ->(category) { joins(services: [:categories]).where({ categories: { id: category.id } }) }
-  scope :search_name, ->(search) { where('suppliers.name LIKE ?', "%#{search}%") }
+  scope :search_name, ->(search) { where('suppliers.name LIKE ?', "%#{search}%").group(:name, :id) }
 
   def delivery?
     delivery
