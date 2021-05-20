@@ -8,15 +8,16 @@
         <%= f.input :first_name, wrapper_html: { class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autofocus: true } %>
         <%= f.input :last_name, wrapper_html: { class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light', autofocus: true } %>
       </div>
-      <div class="">
+      <div class="form-row">
         <%= f.input :address , wrapper_html: { class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light' } %>
         <%= f.input :phone_number, wrapper_html: { class:'border-1 rounded-3 border-light fs-5 py-2 ps-3 pe-4 w-100 text-light' } %>
       </div>
-        <%= f.button :submit, class:'btn btn-info fs-5 fw-bold w-100'%>
+      <div class="form-row text-center my-2 ps-3 pe-4">
+        <%= f.button :submit, class:'btn btn-info fs-5 fw-bold text-white w-100 '%>
+      </div>
       <% end %>
-
-      <div class="text-center">
-        <%= link_to t('devise.shared.links.back'), :back %>
+      <div class="form-row text-center my-2 ps-3 pe-4">
+        <%= link_to t('devise.shared.links.back'), :back, class:'btn btn-dark fs-5 fw-bold text-white w-100' %>
       </div>
     </div>
   </div>
