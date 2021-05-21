@@ -1,5 +1,9 @@
 es:
  helpers:
+  submit:
+    update: "Guardar cambios"
+    create: "Agregar %{model}"
+    search: "Buscar"
   label:
     resource:
       email: 'Email'
@@ -9,10 +13,6 @@ es:
       address: "Dirección"
       password: "Contraseña"
       phone_number: "Telefono"
-    submit:
-      create: "Agregar %{model}"
-      update: "Guardar cambios"
-      search: "Buscar"
   date:
     days: Días
     formats:
