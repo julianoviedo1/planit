@@ -6,10 +6,10 @@
     </div>
     <div class="col-sm-2 col-md-4 mx-3 d-flex flex-row justify-content-end end">
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown-menu-primary" data-bs-toggle="dropdown" aria-expanded="false">
           <%= image_tag 'pedidos.png', class:'img-fluid h-auto'  %>
         </button>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-menu-primary">
           <% if user_signed_in? %>
             </li>
               <%= link_to('Settings', edit_user_path(current_user), class:'dropdown-item') %>        
