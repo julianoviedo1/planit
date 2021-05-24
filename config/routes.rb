@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: %i[edit update]
   resources :categories, only: [:show]
   resources :suppliers, only: [:show]
-  resources :services, only: [:show]
-  resources :orders, only: %i[index create edit]
+  resources :services, only: [:show] do
+    resources :orders, only: %i[new create]
+  end
+  resources :orders, only: %i[index]
 end
