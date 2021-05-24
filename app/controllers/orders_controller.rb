@@ -4,17 +4,17 @@ class OrdersController < ApplicationController
 
 
   def new
-    Order.new
+    @order = Order.new
   end
 
   def create
-    Order.new()
+    @order = Order.new(order_params)
   end
-  
+
   private
 
   def order_params
-    params.require(:categories).permit(:id, :name, :description, :query)
+    params.require(:order).permit(:id, :name, :description, :query)
   end
 
   def set_order
