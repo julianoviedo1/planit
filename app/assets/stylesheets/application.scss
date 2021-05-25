@@ -1,5 +1,4 @@
 $theme-colors: (
-  // "primary":    #11afaf,
   "secondary":  #222b36,
   "success":    #f3fcff,
   "info":       #5bd8d5,
@@ -14,6 +13,7 @@ $font-sizes: (
   "5": 0.9rem,
   "6": 0.8rem
 );
+
 $light-blue: #7af1cb;
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800;900&display=swap');
@@ -50,6 +50,7 @@ html, body {
     box-shadow: 0 0 7px $light-blue !important;
   };
 }
+
 .photo-background {
   background-position: center;
   background-repeat: no-repeat;
@@ -59,7 +60,7 @@ html, body {
 }
 
 .bannerimage {
-  img{
+  img {
     height: 200px;
     width: 100%;
     object-fit: cover; 
