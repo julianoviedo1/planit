@@ -245,7 +245,8 @@ Order.create!(
   start_time: 10,
   end_time: 21,
   home_delivery: true,
-  status: 'pending'
+  status: 'pending',
+  address: 'Juan Paullier 1018, 11200 Montevideo'
 )
 Order.create!(
   user: second_user,
@@ -257,7 +258,8 @@ Order.create!(
   start_time: 18,
   end_time: 22,
   home_delivery: true,
-  status: 'pending'
+  status: 'pending',
+  address: 'Pte. Gral. Oscar Gestido 2549, 11300 Montevideo'
 )
 Order.create!(
   user: first_user,
@@ -269,7 +271,8 @@ Order.create!(
   start_time: 11,
   end_time: 15,
   home_delivery: true,
-  status: 'pending'
+  status: 'pending',
+  address: 'Juan Paullier 1018, 11200 Montevideo'
 )
 
 puts 'Seeds done...'

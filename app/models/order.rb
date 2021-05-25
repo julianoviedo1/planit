@@ -7,4 +7,5 @@ class Order < ApplicationRecord
   validates :start_time, numericality: { in: 0..23 }
   validates :end_time, numericality: { in: 0..23 }
   validates :status, presence: true, inclusion: { in: statuses.keys }
+  validates :address, presence: true
 end
