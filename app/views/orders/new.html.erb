@@ -4,12 +4,12 @@
 <div class="bg-success h-100">
   <div class="vh-100 w-50 container d-flex flex-column py-5  bg-white">
     <h5 class="text-dark my-4 text-left fs-5 fw-bold ps-3 pe-4">Tipo de Entrega</h5>
-    <%= simple_form_for @order do |f| %>
+    <%= simple_form_for @order, url: service_orders_path(@service) do |f| %>
       <div class="form-row ">
         <%= f.input :home_delivery, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark', autofocus: true } %>
       </div>
       <div class="form-row">
-        <%= f.input :address , wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark' } %>
+        <%= f.input :address,  selected: current_user.address, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark' } %>
       </div>
       <div class="form-row">
         <%= f.input :apartment, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark' } %>
@@ -32,3 +32,4 @@
   </div>
 </div>
 
+<% console %>
