@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  before_action :set_service, only: %i[new create]
-  before_action :set_order, only: %i[show]
+  before_action :set_order, only: %i[show edit update]
+  before_action :set_service, only: %i[create]
 
   def index
     @orders = current_user.orders
@@ -8,20 +8,26 @@ class OrdersController < ApplicationController
 
   def show; end
 
-  def new
-    @order = Order.new
-  end
+  def edit; end
 
   def create
     @order = Order.new(order_params)
     @order.user = current_user
-    @order.payment = current_user.payments.first
     @order.service = @service
+    @order.payment = current_user.payments.first
     @order.status = 'pending'
     if @order.save
+      redirect_to edit_order_path(@order)
+    else
+      render service_path(@order.service)
+    end
+  end
+
+  def update
+    if @order.update(order_params)
       redirect_to order_path(@order)
     else
-      render :new
+      render :edit
     end
   end
 
@@ -37,7 +43,8 @@ class OrdersController < ApplicationController
       :delivery_date,
       :start_time,
       :end_time,
-      :comments
+      :comments,
+      :quantity
     )
   end
 
@@ -46,6 +53,6 @@ class OrdersController < ApplicationController
   end
 
   def set_service
-    @service = Service.find(params[:service_id])
+    @service = Service.find(params[:order][:service_id])
   end
 end
