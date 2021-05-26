@@ -12,7 +12,7 @@
           <%= text_field_tag :query, params[:query], class:'mx-2 p-1' %>
         </div>
         <div class="d-flex justify-contet-end">
-          <%= submit_tag "#{t('helpers.label.submit.search')}", name: nil, class:'btn background text-white m-auto mb-0' %>
+          <%= submit_tag "#{t('helpers.submit.search')}", name: nil, class:'btn background text-white m-auto mb-0' %>
         </div>
     <% end %>
   </div>
@@ -24,7 +24,7 @@
         <p class="border-end mx-1 px-2 my-auto"><%= supplier.offers %></p>
         <p class="border-end mx-1 px-2 my-auto"><i class="fas fa-clock text-info pe-2 pt-1"></i> Lun a Sáb <%= supplier.opens_at %>:00hs - <%= supplier.close_at %>:00hs</p>
         <div class="d-flex flex-row  mx-1 px-2 my-auto">
-          <i class="<%= supplier.delivery? ? "fas fa-truck" : "fas fa-house" %> text-info pe-2 my-auto" ></i>
+          <i class="<%= supplier.delivery? ? "fas fa-truck" : "fas fa-home" %> text-info pe-2 my-auto" ></i>
           <p class="fs-6 m-1"><%= supplier.delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
         </div>
       </div>
