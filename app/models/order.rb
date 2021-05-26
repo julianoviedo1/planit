@@ -4,8 +4,8 @@ class Order < ApplicationRecord
   belongs_to :payment
   belongs_to :service
 
-  validates :start_time, numericality: { in: 0..23 }
-  validates :end_time, numericality: { in: 0..23 }
+  validates :start_time, numericality: { in: 0..23 }, on: :update
+  validates :end_time, numericality: { in: 0..23 }, on: :update
   validates :status, presence: true, inclusion: { in: statuses.keys }
-  validates :address, presence: true
+  validates :address, presence: true, on: :update
 end
