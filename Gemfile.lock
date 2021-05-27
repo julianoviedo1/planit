@@ -96,6 +96,7 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     ffi (1.15.0)
+    flatpickr (4.6.6.0)
     font-awesome-rails (4.7.0.7)
       railties (>= 3.2, < 7)
     globalid (0.4.2)
@@ -252,6 +253,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dotenv-rails
+  flatpickr
   font-awesome-rails
   i18n
   jbuilder (~> 2.7)
