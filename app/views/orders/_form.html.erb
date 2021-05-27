@@ -2,11 +2,25 @@
   <div class="vh-100 w-50 container d-flex flex-column py-5  bg-white" id="orderForm">
     <h5 class="text-dark my-4 text-left fs-5 fw-bold ps-3 pe-4">Tipo de Entrega</h5>
     <%= simple_form_for @order do |f| %>
-      <div class="form-row ">
-        <%= f.input :home_delivery, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark', autofocus: true } %>
+      <div class="form-row ms-2">
+          <button class="btn btn-white border border-1 rounded-3 shadow p-3 mx-2 fs-6 fw-bold" id="delivery">
+            <i class="fas fa-truck text-info pe-2 my-auto" ></i>
+            A domicilio
+          </button>
+          <button class="btn btn-white border border-1 rounded-3 shadow p-3 mx-2 fs-6 fw-bold" id="local">
+            <i class="fas fa-home text-info pe-2 my-auto" ></i>
+            Retiro en local
+          </button>
+        <%= f.input :home_delivery, as: :hidden, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark', autofocus: true } %>
       </div>
-      <div class="form-row">
-        <%= f.input :address, input_html: { value: current_user.address }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark' } %>
+      <div class="form row py-2 ps-3 pe-4">
+        <label for="inputAddress" class="form-label ps-3 mb-0 text-dark fs-5">Address</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text bg-white border-end-0"><i class="fas fa-map-marker-alt text-info"></i></span>
+          <input type="text" value="<%= current_user.address %>" class="form-control border-start-0 rounded-end" required>
+          <div class="invalid-feedback">Please provide a valid address.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
       </div>
       <div class="form-row">
         <%= f.input :apartment, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-4 w-100 text-dark' } %>
