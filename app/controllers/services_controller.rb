@@ -3,7 +3,6 @@ class ServicesController < ApplicationController
 
   def show
     @order = Order.new
-    # @order = @service.orders.new
   end
 
   private
