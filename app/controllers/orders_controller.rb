@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: %i[show edit update]
-  before_action :set_service, only: %i[create]
 
   def index
     @orders = current_user.orders
@@ -13,7 +12,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.user = current_user
-    @order.service = @service
+    @order.service_id = params[:service_id]
     @order.payment = current_user.payments.first
     @order.status = 'pending'
     if @order.save
@@ -24,7 +23,7 @@ class OrdersController < ApplicationController
   end
 
   def update
-    if @order.update(order_params)
+    if @order.update!(order_params)
       redirect_to order_path(@order)
     else
       render :edit
@@ -50,9 +49,5 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
-  end
-
-  def set_service
-    @service = Service.find(params[:order][:service_id])
   end
 end
