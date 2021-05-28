@@ -218,7 +218,7 @@ es:
     pm: pm
   helpers:
     submit:
-      update: "Guardar cambios"
+      update: "Continuar"
       create: "Agregar %{model}"
       search: "Buscar"
     label:

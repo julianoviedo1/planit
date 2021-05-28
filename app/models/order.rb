@@ -8,4 +8,12 @@ class Order < ApplicationRecord
   validates :end_time, numericality: { in: 0..23 }, on: :update
   validates :status, presence: true, inclusion: { in: statuses.keys }
   validates :address, presence: true, on: :update
+
+  def has_delivery?
+    service.supplier.delivery?
+  end
+
+  def supplier_address
+    service.supplier.address
+  end
 end
