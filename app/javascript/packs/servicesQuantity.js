@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log('hola');
   function totalPrice() {
     const total = parseInt($('#quantity')[0].value) * parseInt($('#servicePrice')[0].innerText.split(' ').pop());
     $('#total')[0].innerText = '';
