@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: %i[edit update]
   resources :categories, only: [:show]
   resources :suppliers, only: [:show]
-  resources :payments, only: %i[index show]
+  resources :payments, only: %i[index show new edit create update]
   resources :services, only: [:show] do
     resources :orders, only: %i[create]
   end
