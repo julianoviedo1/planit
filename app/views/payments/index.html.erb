@@ -1,0 +1,25 @@
+<header>
+  <%= render 'shared/navbar' %>
+</header>
+<div class="bg-success h-100">
+  <div class="bg-white w-75 container">
+    <h5 class="fs-4">Medios de pago</h5>
+    <div class="row">
+      <% @payments.each do |payment| %>
+        <div class="card shadow col-sm-6 col-md-4">
+          <div class="d-flex flex-row">
+            <i class="<%= payment_type_icon(payment) %> text-info fa-5x m-1"></i>
+            <div class="d-flex flex-column m-2">
+              <h4 class="fs-4 fw-bold m-0 mt-2"><%= payment.payment_type.capitalize %></h4>
+              <h5 class="fs-5 fw-bold m-0 mt-2"><%= payment.type_info %></h5>
+              <h5 class="fs-5 m-0">XXX</h5>
+            </div>
+              <% if current_user.payments.first == payment %>
+                <h5 class="fs-4 d-flex justify-content-end mt-auto text-light"><i class="far fa-check-circle text-info"></i>  Utilizado</h5>
+              <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

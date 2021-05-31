@@ -1,0 +1,16 @@
+<div class="bg-success h-100">
+  <div class="vh-100 w-50 container d-flex flex-column py-5  bg-white" id="orderForm">
+    <div class="w-75 mx-auto">
+      <h5 class="text-dark my-4 p-3 text-left fs-5 fw-bold">Medio de pago</h5>
+    </div>
+    <%= simple_form_for @payment, html: { class:'ps-0' } do |f| %>
+      <div class="row w-75 mx-auto">
+        <%= f.input :payment_type, collection: Payment.payment_types.keys, input_html: { id:'homeDelivery' }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-2 w-100 text-dark', autofocus: true } %>
+      </div>
+      <div id="number" class="row w-75 mx-auto">
+        <%= f.input :card_number, input_html: { id:'homeDelivery' }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-2 w-100 text-dark', autofocus: true } %>
+        <%= f.input :secure_number, input_html: { id:'homeDelivery' }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-2 w-100 text-dark', autofocus: true } %>
+      </div>
+    <% end %>
+    </div>
+  </div>
