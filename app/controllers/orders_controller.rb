@@ -11,10 +11,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.user = current_user
-    @order.service_id = params[:service_id]
-    @order.payment = current_user.payments.first
-    @order.status = 'pending'
+    build_order(@order)
     if @order.save
       redirect_to edit_order_path(@order)
     else
@@ -31,6 +28,13 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def build_order(order)
+    order.user = current_user
+    order.service_id = params[:service_id]
+    order.payment = current_user.payments.first
+    order.status = 'pending'
+  end
 
   def order_params
     params.require(:order).permit(
