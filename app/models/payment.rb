@@ -11,4 +11,12 @@ class Payment < ApplicationRecord
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}".strip
   end
+
+  def type_info
+    if %w[credit_card debit_card].include? payment_type
+      card_number.to_s.last(4).to_i
+    else
+      payment_type
+    end
+  end
 end
