@@ -8,8 +8,16 @@ class Payment < ApplicationRecord
   validates :secure_number, length: { is: 3, allow_blank: true }
   validates :payment_type, presence: true, inclusion: { in: payment_types.keys }
 
-  def full_name
-    "#{first_name.capitalize} #{last_name.capitalize}".strip
+  def payment_array
+    [payment_type, id]
+  end
+
+  def self.uncheck_active_method
+    active.first.current_method = false
+  end
+
+  def current_method?
+    current_method
   end
 
   def type_info
