@@ -3,68 +3,78 @@
 </header>
 <div class="bg-success h-100">
   <div class="bg-white w-75 container">
-    <section class="container">
-      <h2 class="fs-3 fw-bold">Resumen</h2>
+    <section class="container pt-4">
+      <div class="col-md-6 mx-auto my-3">
+        <h2 class="fs-3 fw-bold">Resumen</h2>
+      </div>
     </section>
-    <section class="container border-bottom">
-      <h5 class="fs-5 fw-normal"> Servicio</h5>
-      <div class="d-flex flex-row">    
-        <div class="">
-          <%= cl_image_tag @order.service.photo.key, class:'rounded icon-background' %>
-        </div>
-        <div class="">
+    <section class="container row mx-auto d-flex flex-column">
+      <div class="col-md-6 mx-auto border-bottom">
+        <h6 class="fw-bold letter-spacing-sm fs-6 text-dark my-3"><%= t('activerecord.models.service.one').upcase %></h6>
+        <div class="d-flex flex-row">    
           <div class="">
-            <h5 class="fs-6 fw-bold m-1"><%= @order.supplier.name %></h5>
+            <%= cl_image_tag @order.service.photo.key, class:'rounded icon-background' %>
           </div>
-          <div class="d-flex flex-row">
-            <i class="<%= @order.home_delivery? ? 'fas fa-truck' : 'fas fa-home' %> ms-1 text-info pe-1 my-auto" ></i>
-            <p class="fs-6 m-1 text-dark fw-bold"><%= @order.home_delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
-          </div>
-        </div>
-      </div>
-      <div class="my-3">
-        <h6 class="fs-6 fw-bold"><%= @order.service.name %></h6>
-        <h6 class="fs-6 fw-light"><%= @order.quantity %> invitados</h6>
-      </div>
-    </section>
-    <section class="container border-bottom">
-      <div class="d-flex flex-row">
-        <h5>Detalle de la entrega</h5>
-        <i class="fas fa-pen"></i>
-      </div>
-      <h6 class="fs-6 fw-bold"><i class="fas fa-map-marker-alt text-info"></i><%= @order.address %> || <%= @order.apartment %></h6>
-      <h6 class="fs-6 fw-bold"><i class="far fa-calendar-alt text-info"></i> <%= @order.delivery_date %></h6>
-      <h6 class="fs-6 fw-bold"><i class="fas fa-clock text-info"></i> De <%= @order.start_time %>:00 a <%= @order.end_time %>:00</h6>
-    </section>
-    <section class="container border-bottom">
-      <h6>Metodo de pago</h6>
-      <% current_user.payments.each do |payment| %>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="flexRadio" id="firstPayment" 
-            <%= payment == @order.payment ? 'checked' : '' %> 
-          >
-          <label class="form-check-label" for="firstPayment">
-            <div class="d-flex flex-row">
-              <i class="<%= payment_type_icon(payment) %>"></i>
-              <h5 class="fs-5 fw-bold"><%= payment.type_info %></h5>
+          <div class="ms-2">
+            <div class="">
+              <h5 class="fs-4 fw-bold m-1"><%= @supplier.name %></h5>
             </div>
-          </label>
+              <div class="d-flex flex-row">
+                <i class="<%= @order.home_delivery? ? 'fas fa-truck' : 'fas fa-home' %> ms-1 text-info pe-1 my-auto" ></i>
+                <p class="fs-6 m-1 text-dark fw-bold"><%= @order.home_delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
+              </div>
+          </div>
         </div>
-      <% end %>
-      <div class="d-flex flex-row">
-        <%= link_to 'Agregar metodo de pago', new_payments_path, class:'text-decoration-none text-dark' %>
-        <i class="fas fa-pen"></i>
+        <div class="d-flex flex-row justify-content-between">
+          <div class="my-3">
+            <h6 class="fs-5 fw-bold m-0 p-0"><%= @order.service.name %></h6>
+            <h6 class="fs-6 text-light fw-normal m-0 p-0"><%= @order.quantity %> invitados</h6>
+          </div>
+          <%= link_to service_path(@order.service), class:"text-decoration-none" do %>
+            <i class="fas fa-pen my-3 fs-6 text-dark"></i>
+          <% end %>    
+        </div>
       </div>
     </section>
-    <section class="container border-bottom">
-      <div class="d-flex flex-row justify-content-around">
-        <h5>Total</h5>
-        <h5><%= @order.quantity * @order.service.price %></h5>
+    <section class="container">
+      <div class="col-md-6 mx-auto border-bottom px-3 my-3">
+        <div class="d-flex flex-row justify-content-between">
+          <h5 class="fw-bold letter-spacing-sm fs-6 text-dark my-3"><%= 'Detalle de la entrega'.upcase %></h5>
+          <%= link_to edit_order_path(@order), class:"text-decoration-none" do %>
+            <i class="fas fa-pen my-3 fs-6 text-dark"></i>
+          <% end %>    
+        </div>
+        <h6 class="fs-6 fw-bold"><i class="pe-2 mt-2 fas fa-map-marker-alt text-info"></i><%= @order.address %> || <%= @order.apartment %></h6>
+        <h6 class="fs-6 fw-bold"><i class="pe-2 mt-2 far fa-calendar-alt text-info"></i><%= @order.delivery_date %></h6>
+        <h6 class="fs-6 fw-bold"><i class="pe-2 mt-2 fas fa-clock text-info"></i>De <%= @order.start_time %>:00 a <%= @order.end_time %>:00</h6>
+      </div>
+    </section>
+    <section class="container my-3">
+      <div class="col-md-6 mx-auto border-bottom px-3 py-1">
+        <h6 class="fw-bold letter-spacing-sm fs-6 text-dark my-3">METODO DE PAGO</h6>
+        <%= simple_form_for @order, url: update_payment_order_path(@order), method: :post do |f| %>
+          <%= f.association :payment, legend_tag: false,
+            wrapper_html: {class:'d-flex flex-column'},
+            as: :radio_buttons,
+            checked: @order.payment.payment_array,
+            collection: @payments.map(&:payment_array)
+          %>
+        <div class="d-flex flex-row justify-content-between my-2">
+          <%= link_to '+ Agregar metodo de pago', new_payment_path, class:'text-decoration-none text-dark fs-6' %>
+          <i class="fas fa-pen fs-6 text-dark"></i>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="col-md-6 mx-auto px-3 py-1 d-flex justify-content-between">
+        <h5 class="">Total</h5>
+        <h5 class=""><%= @order.quantity * @order.service.price %></h5>
       </div>
     </section>
     <section>
-      <div class="btn btn-info">
-        Comprar
+      <div class="col-md-6 mx-auto d-flex justify-content-around px-3">
+        <%= f.button :submit, class:'text-white btn btn-info w-100' %>
+      <% end %>
       </div>
     </section>
   </div>
