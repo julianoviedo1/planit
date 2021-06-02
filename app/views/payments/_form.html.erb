@@ -11,6 +11,10 @@
         <%= f.input :card_number, input_html: { id:'homeDelivery' }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-2 w-100 text-dark', autofocus: true } %>
         <%= f.input :secure_number, input_html: { id:'homeDelivery' }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-2 w-100 text-dark', autofocus: true } %>
       </div>
+      <div class="form-row d-flex justify-content-center my-2 p-2">
+        <%= link_to t('devise.shared.links.back'), :back, class:'col-12 col-md-3 btn btn-dark fs-5 fw-bold text-white m-2' %>
+        <%= f.button :submit, class:'col-12 col-md-3 btn btn-info fs-5 fw-bold text-white m-2'%>
+      </div>
     <% end %>
-    </div>
   </div>
+</div>

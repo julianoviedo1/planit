@@ -3,23 +3,30 @@
 </header>
 <div class="bg-success h-100">
   <div class="bg-white w-75 container">
-    <h5 class="fs-4">Medios de pago</h5>
+    <h5 class="fs-4 fw-bold my-3">Medios de pago</h5>
     <div class="row">
       <% @payments.each do |payment| %>
-        <div class="card shadow col-sm-6 col-md-4">
-          <div class="d-flex flex-row">
-            <i class="<%= payment_type_icon(payment) %> text-info fa-5x m-1"></i>
-            <div class="d-flex flex-column m-2">
-              <h4 class="fs-4 fw-bold m-0 mt-2"><%= payment.payment_type.capitalize %></h4>
-              <h5 class="fs-5 fw-bold m-0 mt-2"><%= payment.type_info %></h5>
-              <h5 class="fs-5 m-0">XXX</h5>
+        <div class="col-sm-6 col-md-5">
+          <%= link_to edit_payment_path(payment), class:'text-decoration-none d-flex flex-row text-dark' do %>
+            <div class="card shadow d-flex flex-row  bd-highlight mb-3 text-dark">
+              <i class="<%= payment_type_icon(payment) %> text-info fa-5x m-1"></i>
+              <div class="d-flex flex-column m-2">
+                <h4 class="fs-4 fw-bold m-0 mt-2"><%= payment.payment_type.capitalize %></h4>
+                <h5 class="fs-5 fw-bold m-0 mt-2"><%= payment.type_info %></h5>
+              </div>
+              <div class="flex-column m-2 ms-auto p-2 bd-highlight">
+                <%= link_to  "Editar", edit_payment_path(payment), class:"m-1 btn-sm btn-info text-white" %>
+              </div>
+              <div class="position-absolute bottom-0 end-0">
+                <% if payment.current_method? %>
+                  <h5 class="m-1 fs-4 d-flex justify-content-end text-light"><i class="far fa-check-circle text-info"></i>  Utilizado</h5>
+                <% end %>
+              </div>
             </div>
-              <% if current_user.payments.first == payment %>
-                <h5 class="fs-4 d-flex justify-content-end mt-auto text-light"><i class="far fa-check-circle text-info"></i>  Utilizado</h5>
-              <% end %>
-          </div>
+          <% end %>
         </div>
       <% end %>
     </div>
+    <%= link_to  "Nuevo Metodo de pago", new_payment_path, class:'btn btn-info text-white fs-5 my-3' %>
   </div>
 </div>
