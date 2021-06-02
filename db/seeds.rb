@@ -29,11 +29,25 @@ debit_card = Payment.create!(
   payment_type: 'debit_card',
   user: first_user,
   card_number: 4_110_002_223_335_566,
-  secure_number: 345
+  secure_number: 345,
+  current_method: true
 )
 cash = Payment.create!(
   payment_type: 'cash',
-  user: second_user
+  user: first_user,
+  current_method: false
+)
+debit_card_second = Payment.create!(
+  payment_type: 'debit_card',
+  user: second_user,
+  card_number: 4_110_002_223_335_588,
+  secure_number: 456,
+  current_method: false
+)
+cash_second = Payment.create!(
+  payment_type: 'cash',
+  user: second_user,
+  current_method: true
 )
 
 puts 'Creating Suppliers...'
@@ -251,7 +265,7 @@ Order.create!(
 Order.create!(
   user: second_user,
   service: second_brunch,
-  payment: cash,
+  payment: cash_second,
   quantity: 20,
   delivery_date: Date.current.next_week,
   comments: 'Everything needs ketchup',
@@ -264,7 +278,7 @@ Order.create!(
 Order.create!(
   user: first_user,
   service: breakfast,
-  payment: cash,
+  payment: cash_second,
   quantity: 20,
   delivery_date: Date.current.next_week,
   comments: '',
