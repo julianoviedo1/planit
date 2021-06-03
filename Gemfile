@@ -9,6 +9,7 @@ gem 'cloudinary'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'flatpickr'
 gem 'font-awesome-rails'
 gem 'i18n'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'

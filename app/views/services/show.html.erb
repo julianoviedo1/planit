@@ -15,33 +15,33 @@
     </div>
   </section>
   <section class='container w-75 bg-white'>
-    <h6 class="fw-bold letter-spacing py-4 text-dark fs-6 mx-4">INVITADOS</h6>
-    <div class="row mx-4">
-      <div class="col-4 col-sm-2 col-md-1 m-0 px-0">
-      <%= simple_form_for @service.orders.build do |f| %>
-        <%= f.input :quantity, label: false, input_html: { id: 'quantity', class:'text-center', value: 1 }  %>
-      <% end %>
-      </div>
-      <div class="col-4">
-        <div class="input-group">
-          <button class="btn btn-outline-dark px-4 fw-bold" id='substract' type="button">-</button>
-          <button class="btn btn-outline-dark px-4 fw-bold" id='add' type="button">+</button>
+    <%= simple_form_for @order, url: service_orders_path(@service) do |f| %>
+      <h6 class="fw-bold letter-spacing py-4 text-dark fs-6 mx-4">INVITADOS</h6>
+      <div class="row mx-4">
+        <div class="col-4 col-sm-2 col-md-1 m-0 px-0">
+          <%= f.input :quantity, label: false, input_html: { id: 'quantity', class:'text-center', value: 1 }  %>
+        </div>
+        <div class="col-4">
+          <div class="input-group">
+            <button class="btn btn-outline-dark px-4 fw-bold" id="substract" type="button">-</button>
+            <button class="btn btn-outline-dark px-4 fw-bold" id="add" type="button">+</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row mx-4 pt-5 px-0">
-      <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-between">
-        <h5  class="fw-bold fs-5">Total</h5>
-        <h5 id="servicePrice" class="fw-bold d-none">$ <%= @service.price  %></h5>
-        <h5 id="total" class="fw-bold">$ <%= @service.price  %></h5>
+      <div class="row mx-4 pt-5 px-0">
+        <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-between">
+          <h5  class="fw-bold fs-5">Total</h5>
+          <h5 id="servicePrice" class="fw-bold d-none">$ <%= @service.price  %></h5>
+          <h5 id="total" class="fw-bold">$ <%= @service.price  %></h5>
+        </div>
       </div>
-    </div>
-    <div class="row mx-4 py-3 px-0 text-center">
-      <div class="col-12 col-sm-6 col-md-5 d-flex justify-content-start p-0">
-        <button class="col fs-5 text-dark btn btn-white border-dark me-2"><i class="fas fa-plus-circle text-dark"></i> Agregar a lista</button>
-        <%= link_to 'Comprar', new_service_order_path(@service), class:"col fs-5 text-white btn btn-info" %>
+      <div class="row mx-4 py-3 px-0 text-center">
+        <div class="col-12 col-sm-6 col-md-5 d-flex justify-content-start p-0">
+          <button class="col fs-5 text-dark btn btn-white border-dark me-2"><i class="fas fa-plus-circle text-dark"></i> Agregar a lista</button>
+          <%= f.button :submit, class:'col fs-5 text-white btn btn-info'%>
+        </div>
       </div>
-    </div>
+    <% end %>
   </section>
 </div>
 <%= javascript_pack_tag 'servicesQuantity' %>

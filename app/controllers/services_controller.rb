@@ -1,7 +1,9 @@
 class ServicesController < ApplicationController
   before_action :set_service, only: %i[show]
 
-  def show; end
+  def show
+    @order = Order.new
+  end
 
   private
 

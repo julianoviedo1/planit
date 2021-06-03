@@ -1,0 +1,61 @@
+<div class="bg-success h-100">
+  <div class="vh-100 w-50 container d-flex flex-column py-5  bg-white" id="orderForm">
+    <div class="w-75 mx-auto">
+      <h5 class="text-dark my-4 p-3 text-left fs-5 fw-bold">Tipo de Entrega</h5>
+    </div>
+    <%= simple_form_for @order, html: { class:'ps-0' } do |f| %>
+      <div class="row w-75 mx-auto">
+          <span class="<%= @order.has_delivery? ? '' : 'disabled' %> col-sm-4 btn btn-white border border-1 rounded-3 shadow p-3 mx-2 fs-6 fw-bold" id="delivery">
+            <i class="fas fa-truck text-info pe-2 my-auto" ></i>
+            A domicilio
+          </span>
+          <span class="col-sm-4 btn btn-white border border-1 rounded-3 shadow p-3 mx-2 fs-6 fw-bold" id="shop">
+            <i class="fas fa-home text-info pe-2 my-auto" ></i>
+            Retiro en local
+          </span>
+        <%= f.input :home_delivery, as: :hidden, input_html: { id:'homeDelivery' }, wrapper_html: { class:'border-1 rounded-3 border-dark fs-5 py-2 ps-3 pe-2 w-100 text-dark', autofocus: true } %>
+      </div>
+      <div class="row w-75 mx-auto my-3">
+        <label for="inputAddress" class="form-label ps-3 mb-0 text-dark fs-5 fw-bold">Address</label>
+        <div class="input-group has-validation">
+          <span class="col input-group-text bg-white border-light border-end-0 rounded-start"><i class="fas fa-map-marker-alt text-info"></i></span>
+          <%= f.input_field :address, label: false, value: "#{delivery_adress_value}", class:'col-10 border border-1 p-2 border-start-0 rounded-end border-light' %>
+          <div class="invalid-feedback">Please provide a valid address.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="row w-75 mx-auto my-3 ">
+        <label for="inputAddress" class="form-label ps-3 mb-0 text-dark fs-5 fw-bold">Fecha de entrega</label>
+        <div class="input-group pe-2">
+          <%= f.input_field :delivery_date, as: :string, type: :text, label: false, id:'deliveryDate', class:'col-10 border border-1 p-2 border-end-0 rounded-start border-light fs-5' %>
+          <span class="col input-group-text bg-white border-light border-start-0 rounded-end d-flex justify-content-end"><i class="far fa-calendar-alt text-info"></i></span>
+        </div>
+      </div>
+      <div class="w-75 m-auto text-dark">
+        <h6 class="fs-5 text-left justify-content-center mx-3 fw-bold">Horario</h6>
+      </div>
+      <div class="row w-75 mx-auto mb-3">
+        <div class="input-group has-validation col">
+          <%= f.input_field :start_time, label: false, placeholder: 'Inicio', class:'col-7 border border-1 p-2 border-end-0 rounded-start border-light' %>
+          <span class="input-group-text col bg-white border-light border-start-0 rounded-end d-flex justify-content-end"><i class="fas fa-clock text-info"></i></span>
+          <div class="invalid-feedback">Please provide a valid start_time.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+        <div class="input-group has-validation col">
+          <%= f.input_field :end_time, label: false, placeholder: 'Fin', class:'col-7 border border-1 p-2 border-end-0 rounded-start border-light' %>
+          <span class="input-group-text col bg-white border-light border-start-0 rounded-end d-flex justify-content-end"><i class="fas fa-clock text-info"></i></span>
+          <div class="invalid-feedback">Please provide a valid end_time.</div>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="row w-75 mx-auto my-3">
+        <%= f.input :comments, input_html: { class:'w-100 border border-1 p-2 rounded border-light fs-5 py-4 ps-3 text-dark' }, wrapper_html: { class:'fw-bold fs-5 text-dark py-2 text-left' } %>
+      </div>
+      <div class="form-row d-flex justify-content-center my-2 p-2">
+        <%= f.button :submit, class:'col-12 col-md-3 btn btn-info fs-5 fw-bold text-white m-2'%>
+        <%= link_to t('devise.shared.links.back'), :back, class:'col-12 col-md-3 btn btn-dark fs-5 fw-bold text-white m-2' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= javascript_pack_tag 'ordersForm' %>
