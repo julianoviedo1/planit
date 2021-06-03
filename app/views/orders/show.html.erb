@@ -1,3 +1,71 @@
 <header>
   <%= render 'shared/navbar' %>
 </header>
+<div class="bg-success h-100">
+  <div class="bg-white w-75 container">
+    <section class="container">
+      <h2 class="fs-3 fw-bold">Resumen</h2>
+    </section>
+    <section class="container border-bottom">
+      <h5 class="fs-5 fw-normal"> Servicio</h5>
+      <div class="d-flex flex-row">    
+        <div class="">
+          <%= cl_image_tag @order.service.photo.key, class:'rounded icon-background' %>
+        </div>
+        <div class="">
+          <div class="">
+            <h5 class="fs-6 fw-bold m-1"><%= @order.supplier.name %></h5>
+          </div>
+          <div class="d-flex flex-row">
+            <i class="<%= @order.home_delivery? ? 'fas fa-truck' : 'fas fa-home' %> ms-1 text-info pe-1 my-auto" ></i>
+            <p class="fs-6 m-1 text-dark fw-bold"><%= @order.home_delivery? ? 'Entrega a domicilio' : 'Retiro por sucursal' %></p>
+          </div>
+        </div>
+      </div>
+      <div class="my-3">
+        <h6 class="fs-6 fw-bold"><%= @order.service.name %></h6>
+        <h6 class="fs-6 fw-light"><%= @order.quantity %> invitados</h6>
+      </div>
+    </section>
+    <section class="container border-bottom">
+      <div class="d-flex flex-row">
+        <h5>Detalle de la entrega</h5>
+        <i class="fas fa-pen"></i>
+      </div>
+      <h6 class="fs-6 fw-bold"><i class="fas fa-map-marker-alt text-info"></i><%= @order.address %> || <%= @order.apartment %></h6>
+      <h6 class="fs-6 fw-bold"><i class="far fa-calendar-alt text-info"></i> <%= @order.delivery_date %></h6>
+      <h6 class="fs-6 fw-bold"><i class="fas fa-clock text-info"></i> De <%= @order.start_time %>:00 a <%= @order.end_time %>:00</h6>
+    </section>
+    <section class="container border-bottom">
+      <h6>Metodo de pago</h6>
+      <% current_user.payments.each do |payment| %>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="flexRadio" id="firstPayment" 
+            <%= payment == @order.payment ? 'checked' : '' %> 
+          >
+          <label class="form-check-label" for="firstPayment">
+            <div class="d-flex flex-row">
+              <i class="<%= payment_type_icon(payment) %>"></i>
+              <h5 class="fs-5 fw-bold"><%= payment.type_info %></h5>
+            </div>
+          </label>
+        </div>
+      <% end %>
+      <div class="d-flex flex-row">
+        <%= link_to 'Agregar metodo de pago', new_payments_path, class:'text-decoration-none text-dark' %>
+        <i class="fas fa-pen"></i>
+      </div>
+    </section>
+    <section class="container border-bottom">
+      <div class="d-flex flex-row justify-content-around">
+        <h5>Total</h5>
+        <h5><%= @order.quantity * @order.service.price %></h5>
+      </div>
+    </section>
+    <section>
+      <div class="btn btn-info">
+        Comprar
+      </div>
+    </section>
+  </div>
+</div>
