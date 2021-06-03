@@ -39,10 +39,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  def confirm
-    sleep(3)
-    redirect_to orders_path
-  end
+  def confirm; end
 
   private
 
