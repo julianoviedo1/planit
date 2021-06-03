@@ -8,5 +8,12 @@ Rails.application.routes.draw do
   resources :services, only: [:show] do
     resources :orders, only: %i[create]
   end
-  resources :orders, only: %i[index show edit update]
+  resources :orders, only: %i[index show edit update] do
+    collection do
+      get :confirm
+    end
+    member do
+      post :update_payment
+    end
+  end
 end

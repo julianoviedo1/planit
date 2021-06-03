@@ -1,11 +1,14 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show edit update]
+  before_action :set_order, only: %i[show edit update update_payment]
 
   def index
     @orders = current_user.orders
   end
 
-  def show; end
+  def show
+    @supplier = @order.service.supplier
+    @payments = current_user.payments
+  end
 
   def edit; end
 
@@ -27,6 +30,17 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update_payment
+    if @order.update!(order_params)
+      @order.status = 'completed'
+      redirect_to confirm_orders_path
+    else
+      render :show
+    end
+  end
+
+  def confirm; end
+
   private
 
   def build_order(order)
@@ -39,6 +53,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(
       :service_id,
+      :payment_id,
       :id,
       :home_delivery,
       :address,

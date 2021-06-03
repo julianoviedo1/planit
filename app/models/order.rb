@@ -3,18 +3,17 @@ class Order < ApplicationRecord
   belongs_to :user
   belongs_to :payment
   belongs_to :service
-  has_one :supplier, through: :service
 
   validates :start_time, numericality: { in: 0..23 }, on: :update
   validates :end_time, numericality: { in: 0..23 }, on: :update
   validates :status, presence: true, inclusion: { in: statuses.keys }
   validates :address, presence: true, on: :update
 
-  def has_delivery?
-    supplier.delivery?
+  def delivery?
+    service.supplier.delivery?
   end
 
   def supplier_address
-    supplier.address
+    service.supplier.address
   end
 end
