@@ -22,7 +22,7 @@ class Payment < ApplicationRecord
 
   def type_info
     if %w[credit_card debit_card].include? payment_type
-      card_number.to_s.last(4).to_i
+      card_number.to_s.last(4)
     else
       payment_type
     end
