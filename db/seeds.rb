@@ -289,4 +289,8 @@ Order.create!(
   address: 'Juan Paullier 1018, 11200 Montevideo'
 )
 
+puts 'Creating Admin...'
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
 puts 'Seeds done...'
