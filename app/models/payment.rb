@@ -8,7 +8,7 @@ class Payment < ApplicationRecord
   validates :secure_number, length: { is: 3, allow_blank: true }
   validates :payment_type, presence: true, inclusion: { in: payment_types.keys }
 
-  def payment_array
+  def radiobtn_array
     [payment_type, id]
   end
 
