@@ -10,7 +10,7 @@ gem 'cloudinary'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails', groups: [:development, :test]
-gem "factory_bot_rails"
+gem 'factory_bot_rails'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'flatpickr'
 gem 'font-awesome-rails'
@@ -62,6 +62,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'shoulda-matchers', '~> 4.0'
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
