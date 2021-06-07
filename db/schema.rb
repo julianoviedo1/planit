@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_172549) do
+ActiveRecord::Schema.define(version: 2021_06_08_023154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +75,6 @@ ActiveRecord::Schema.define(version: 2021_06_03_172549) do
     t.bigint "payment_id", null: false
     t.bigint "service_id", null: false
     t.integer "quantity"
-    t.integer "total_price"
     t.date "delivery_date"
     t.string "comments"
     t.integer "start_time"
@@ -95,10 +94,10 @@ ActiveRecord::Schema.define(version: 2021_06_03_172549) do
   create_table "payments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.integer "payment_type"
-    t.bigint "card_number"
+    t.string "card_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "secure_number"
+    t.string "secure_number"
     t.boolean "current_method"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end
@@ -127,7 +126,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_172549) do
     t.string "name"
     t.string "description"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "delivery"
