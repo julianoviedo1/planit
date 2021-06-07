@@ -10,7 +10,7 @@ gem 'cloudinary'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails', groups: [:development, :test]
-gem "factory_bot_rails"
+gem 'factory_bot_rails'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'flatpickr'
 gem 'font-awesome-rails'
