@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :supplier do
     name { Faker::Company.name }
-    descrption { Faker::Company.catch_phrase }
+    description { Faker::Company.catch_phrase }
     address { Faker::Address.full_address }
-    phone_number { Faker::PhoneNumber.cell_phone_with_country_code }
+    phone_number { Faker::Number.number(digits: 12) }
     delivery { Faker::Boolean.boolean(true_ratio: 0.5) }
     offers { 'Desayunos, almuerzos, dulces' }
     opens_at { Faker::Number.between(from: 0, to: 23) }

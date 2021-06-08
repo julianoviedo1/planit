@@ -10,7 +10,5 @@ FactoryBot.define do
     status { 'pending' }
     home_delivery { supplier.delivery? ? true : false }
     address { supplier.delivery? ? user.address : supplier.address}
-    # apartment 
-    # comments
   end
 end
